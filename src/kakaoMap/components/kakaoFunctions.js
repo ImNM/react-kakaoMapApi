@@ -7,7 +7,7 @@ import InfoWindowContent from './InfoWindowContent'
 
 export const makeMarker = (map) =>{
     for (var i = 0; i < datas.length; i ++) {
-        
+        console.log(datas[i])
         const imageSize = new kakao.maps.Size(64, 69); // 마커이미지의 크기입니다
         const imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
         const markerImage = new kakao.maps.MarkerImage(datas[i].imageSrc, imageSize, imageOption);//마커 이미지 생성

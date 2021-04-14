@@ -1,8 +1,9 @@
-import React,{useEffect, useState} from 'react'
+import React,{ useState} from 'react'
 import { Collapse } from 'antd';
-import {dataMarker} from '../Data/MapData'
+
 import { SettingOutlined } from '@ant-design/icons';
-import {dataInit,datas} from '../Data/MapData'
+import {datas} from '../Data/MapData'
+import SetData from './SetData'
 const { Panel } = Collapse;
 /*global kakao*/
 
@@ -61,6 +62,7 @@ function MapInfoListView({markers}) {
     <SettingOutlined
       onClick={event => {
         seteditNum(id)
+        console.log(id)
         event.stopPropagation();
       }}
     />
@@ -70,7 +72,9 @@ function MapInfoListView({markers}) {
 
   
     return (
-        <Collapse  onChange={callback}>
+      <div>
+         <SetData editNum ={editNum}/>
+         <Collapse  onChange={callback}>
           {data.length && data.map((markerInfo, index)=>(
            
 
@@ -80,6 +84,8 @@ function MapInfoListView({markers}) {
           ))}
      
       </Collapse>
+      </div>
+       
     )
 }
 

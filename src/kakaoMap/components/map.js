@@ -7,16 +7,18 @@ import MapInfoListView from './MapInfoListView'
 
 
 
+
 function Map() {
     const [markers, setmarkers] = useState([])
     const [manager, setmanager] = useState([])
     const [setMarkerInfo, setsetMarkerInfo] = useState({x:0,y:0})
     
+    
    
     useEffect(() => {
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
         mapOption = { 
-            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            center: new kakao.maps.LatLng(37.55065581856475, 126.92402027711363), // 지도의 중심좌표
             level: 3 // 지도의 확대 레벨
         };
     
@@ -47,8 +49,9 @@ function Map() {
         <button onClick ={onClickSetMarker} >마커 표시하기</button>
         <button onClick ={onClickSaveMarker} >마커 좌표 보기</button>
         <a>처음 마커 좌표만 보여줍니다.</a>
-        <p>X: {setMarkerInfo.x} Y:{setMarkerInfo.y} </p>
-        <MapInfoListView markers = {markers} />
+        <p>경도: {setMarkerInfo.x} 위도:{setMarkerInfo.y} </p>
+       
+        <MapInfoListView markers = {markers}  />
          </>
     )
 }

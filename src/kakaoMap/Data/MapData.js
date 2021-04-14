@@ -91,6 +91,21 @@ export const datas = dataWrapper();
 
 export const dataSave = (data) =>{
     const loadeddata =JSON.parse(localStorage.getItem("MapData")) 
-     loadeddata.push(data)
-     localStorage.setItem("MapData", JSON.stringify(loadeddata));
+    var state = false;
+    var saveindex  = -1;
+    loadeddata.map((one,index)=>{
+       if( one.id === data.id){
+           state =true;
+           saveindex = index
+       }
+    })
+
+    if(state){ //정보수정일때
+        loadeddata[saveindex] = data;
+    }
+    else{  //  정보 수정이 아닐때 
+        loadeddata.push(data)
+    }
+    localStorage.setItem("MapData", JSON.stringify(loadeddata));  
+   
  }
