@@ -2,36 +2,95 @@
 /*global kakao*/
 
 
-export const coffeePositions = [ 
-    new kakao.maps.LatLng(37.499590490909185, 127.0263723554437),
-    new kakao.maps.LatLng(37.499427948430814, 127.02794423197847),
-    new kakao.maps.LatLng(37.498553760499505, 127.02882598822454),
-    new kakao.maps.LatLng(37.497625593121384, 127.02935713582038),
-    new kakao.maps.LatLng(37.49646391248451, 127.02675574250912),
-    new kakao.maps.LatLng(37.49629291770947, 127.02587362608637),
-    new kakao.maps.LatLng(37.49754540521486, 127.02546694890695)                
+export const dataMarker = [
+    {
+        id: 0,
+        title: '카카오', 
+        WGS84X : 33.450705,
+        WGS84Y : 126.570677,
+        selected : false,
+        InfoTitle : "처음",
+        Infodesc: "ㅎㅇㅎㅇㅎㅇ~~",
+        tags : "jeju",
+        imageSrc : 'http://k.kakaocdn.net/dn/QPtC7/btqX09yP4mb/TjDMw3wM9gRNT8Zr7b6kkk/img_110x110.jpg'
+    },
+    {
+        id: 1,
+        title: '카카오',
+        WGS84X : 33.450936,
+        WGS84Y : 126.569477, 
+        selected : false,
+        InfoTitle : "두번째",
+        Infodesc: "두번째잘만들었어요~~",
+        tags : "jeju",
+        imageSrc :  'http://k.kakaocdn.net/dn/QPtC7/btqX09yP4mb/TjDMw3wM9gRNT8Zr7b6kkk/img_110x110.jpg'
+    },
+    {
+        id: 2,
+        title: '카카오',
+        WGS84X : 33.450879,
+        WGS84Y : 126.569940,  
+        selected : false,
+        InfoTitle : "세번째",
+        Infodesc: "세번째잘만들었어여~",
+        tags : "jeju",
+        imageSrc :  'http://k.kakaocdn.net/dn/QPtC7/btqX09yP4mb/TjDMw3wM9gRNT8Zr7b6kkk/img_110x110.jpg'
+    },
+    {
+        id: 3,
+        title: '카카오',
+        WGS84X : 33.45,
+        WGS84Y : 126.570738, 
+        selected : false,
+        InfoTitle : "네번째",
+        Infodesc: "카카오가고싶다~~~",
+        tags : "jeju",
+        imageSrc : "https://avatars.githubusercontent.com/u/13329304?v=4"
+    },
+    {
+        id: 4,
+        title: '카카오',
+        WGS84X : 37.550792244220375,
+        WGS84Y : 126.83973391209254, 
+        selected : false,
+        InfoTitle : "우리집임",
+        Infodesc: "우장산 아이파크",
+        tags : "seoul",
+        imageSrc : "https://avatars.githubusercontent.com/u/13329304?v=4"
+    }
 ];
-
-// 편의점 마커가 표시될 좌표 배열입니다
-export const storePositions = [
-    new kakao.maps.LatLng(37.497535461505684, 127.02948149502778),
-    new kakao.maps.LatLng(37.49671536281186, 127.03020491448352),
-    new kakao.maps.LatLng(37.496201943633714, 127.02959405469642),
-    new kakao.maps.LatLng(37.49640072567703, 127.02726459882308),
-    new kakao.maps.LatLng(37.49640098874988, 127.02609983175294),
-    new kakao.maps.LatLng(37.49932849491523, 127.02935780247945),
-    new kakao.maps.LatLng(37.49996818951873, 127.02943721562295)
-];
-
-// 주차장 마커가 표시될 좌표 배열입니다
-export const carparkPositions = [
-    new kakao.maps.LatLng(37.49966168796031, 127.03007039430118),
-    new kakao.maps.LatLng(37.499463762912974, 127.0288828824399),
-    new kakao.maps.LatLng(37.49896834100913, 127.02833986892401),
-    new kakao.maps.LatLng(37.49893267508434, 127.02673400572665),
-    new kakao.maps.LatLng(37.49872543597439, 127.02676785815386),
-    new kakao.maps.LatLng(37.49813096097184, 127.02591949495914),
-    new kakao.maps.LatLng(37.497680616783086, 127.02518427952202)                       
-];    
+export const dataInit = () => {
+    const loadeddata =JSON.parse( localStorage.getItem("MapData"))
+  
+    if(loadeddata !== null){
+        console.log("asdfasdf")
+        return;
+    }
+    else{
+        localStorage.setItem("MapData", JSON.stringify(dataMarker));
+    }
 
 
+
+}
+
+export const dataWrapper = ()=>{
+ 
+    const loadeddata =JSON.parse(localStorage.getItem("MapData")) 
+    if (loadeddata !== null) {
+        console.log(loadeddata)
+        return loadeddata;
+      }
+    else{
+    
+        return null;
+    }
+}
+
+export const datas = dataWrapper();
+
+export const dataSave = (data) =>{
+    const loadeddata =JSON.parse(localStorage.getItem("MapData")) 
+     loadeddata.push(data)
+     localStorage.setItem("MapData", JSON.stringify(loadeddata));
+ }
